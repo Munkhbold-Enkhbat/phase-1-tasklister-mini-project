@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  selectTag()
   let form = document.querySelector('form')
-  // form.appendChild(selectTag())
+ 
   handleTask(form)
 });
+
 
 function createNewTask(newTask) {
   const li = document.createElement('li')
@@ -30,14 +32,14 @@ function handleTask(element) {
   })
 }
 
-// function selectTag() {
-//   const select = document.createElement('select')
-//   const colors = ['', 'red', 'yellow', 'green']
-//   for(let color of colors) {
-//     let option = document.createElement('option')
-//     option.textContent = color
-//     option.style = `background-color:${color}`
-//     select.appendChild(option)
-//   }
-//   return select
-// }
+function selectTag() {
+  const select = document.getElementById('colors')
+  const colors = ['', 'red', 'yellow', 'green']
+  for(let color of colors) {
+    let option = document.createElement('option')
+    option.textContent = color
+    option.style = `background-color:${color}`
+    select.appendChild(option)
+  }
+  return select
+}
