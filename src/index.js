@@ -1,26 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
   let form = document.querySelector('form')
-  submitTask(form)
+  // form.appendChild(selectTag())
+  handleTask(form)
 });
 
-function handleNewTask(newTask) {
+function createNewTask(newTask) {
   const li = document.createElement('li')
   const btn = document.createElement('button')
 
-  btn.addEventListener('click', (e) => {
-    e.target.parentNode.remove()
-  })
-  
-  btn.textContent = 'x'
+  deleteTask(btn)
+
+  btn.textContent = 'X'
   li.textContent = `${newTask}  `
   document.querySelector('ul').appendChild(li).appendChild(btn)  
 }
 
-function submitTask(element) {
+function deleteTask(element) {
+  element.addEventListener('click', (e) => {
+    e.target.parentNode.remove()
+  })
+}
+
+function handleTask(element) {
   element.addEventListener('submit', (e) => {
     e.preventDefault()
-    const newTask = event.target['new-task-description'].value
-    handleNewTask(newTask)
+    const newTask = e.target['new-task-description'].value
+    createNewTask(newTask)
     element.reset()
   })
 }
+
+// function selectTag() {
+//   const select = document.createElement('select')
+//   const colors = ['', 'red', 'yellow', 'green']
+//   for(let color of colors) {
+//     let option = document.createElement('option')
+//     option.textContent = color
+//     option.style = `background-color:${color}`
+//     select.appendChild(option)
+//   }
+//   return select
+// }
