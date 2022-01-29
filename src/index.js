@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   selectTag()
-  let form = document.querySelector('form')
- 
+  let form = document.querySelector('form') 
   handleTask(form)
 });
 
@@ -14,6 +13,8 @@ function createNewTask(newTask) {
 
   btn.textContent = 'X'
   li.textContent = `${newTask}  `
+   
+  console.log(colorPriority());
   document.querySelector('ul').appendChild(li).appendChild(btn)  
 }
 
@@ -42,4 +43,16 @@ function selectTag() {
     select.appendChild(option)
   }
   return select
+}
+
+function colorPriority() {
+  const select = document.querySelector('select')
+  debugger
+  select.addEventListener('change', (e) => {
+    // // console.log(e.target.value);
+    // let choice = document.getElementById('new-task-description')
+    // choice.style = `color: ${e.target.textContent}`
+    // return e.target.value
+    console.log(e);
+  })
 }
